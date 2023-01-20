@@ -95,18 +95,27 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
               bottomNavigationBar: SafeArea(
                 top: false,
                 minimum: AppUtils.kPaddingAllT0,
-                child: ElevatedButton(
-                  onPressed: state is ButtonEnableState
-                      ? () {
-                          context.read<LoginBloc>().add(
-                                OnButtonPressedEvent(
-                                  loginText: loginTextController.text,
-                                  passwordText: passwordTextController.text,
-                                ),
-                              );
-                        }
-                      : null,
-                  child: const Text("Login"),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+                      onPressed: state is ButtonEnableState
+                          ? () {
+                              context.read<LoginBloc>().add(
+                                    OnButtonPressedEvent(
+                                      loginText: loginTextController.text,
+                                      passwordText: passwordTextController.text,
+                                    ),
+                                  );
+                            }
+                          : null,
+                      child: const Text("Login"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: const Text("Register"),
+                    ),
+                  ],
                 ),
               ),
             );
